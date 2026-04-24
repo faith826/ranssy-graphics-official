@@ -7,45 +7,47 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
-      {/* Background Gradients */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-secondary/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full" />
-      </div>
+      {/* Background Mesh Gradients */}
+      <div className="mesh-gradient-red" />
+      <div className="mesh-gradient-navy" />
 
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10 w-full">
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center relative z-10 w-full">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
+          className="col-span-12 md:col-span-6 space-y-6"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-secondary/10 text-secondary rounded-full text-xs font-bold mb-6 tracking-wide uppercase">
-            <Sparkles className="w-3 h-3" />
-            Empowering Creativity via AI
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-secondary/10 border border-secondary/30 text-secondary rounded-full text-xs font-bold tracking-wide uppercase">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+            </span>
+            NEW: AI AUTOMATION TOOLS
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-[1.1]">
-            {t.hero.title}
+          <h1 className="text-6xl md:text-7xl font-extrabold leading-[1.1]">
+            Crafting Visuals <br/>
+            <span className="text-gradient">{t.hero.title.split(' ').slice(-2).join(' ')}</span>
           </h1>
           
-          <p className="text-lg text-slate-600 mb-10 max-w-lg leading-relaxed">
+          <p className="text-lg text-gray-400 max-w-md leading-relaxed">
             {t.hero.subtitle}
           </p>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 pt-4">
             <a 
               href="#courses" 
-              className="px-8 py-4 bg-primary text-white rounded-xl font-bold flex items-center gap-2 hover:bg-primary/90 transition-all hover:translate-y-[-2px] hover:shadow-lg"
+              className="px-8 py-4 bg-secondary text-white rounded-xl font-bold flex items-center gap-2 hover:scale-105 transition-transform"
             >
               {t.hero.ctaStart}
               <ArrowRight className="w-4 h-4" />
             </a>
-            <a 
-              href="#contact" 
-              className="px-8 py-4 border-2 border-slate-200 text-primary rounded-xl font-bold hover:border-primary hover:bg-primary/5 transition-all"
+            <button 
+              className="px-8 py-4 glass-button rounded-xl font-bold"
             >
               {t.hero.ctaService}
-            </a>
+            </button>
           </div>
         </motion.div>
 

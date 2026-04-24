@@ -7,37 +7,51 @@
   
   --color-primary: #1E2A5A;
   --color-secondary: #E53935;
+  --color-dark: #0B0F1E;
   --color-accent: #f8f9fa;
   
   --radius-xl: 1.5rem;
   --radius-2xl: 2rem;
+  --radius-3xl: 2.5rem;
 }
 
 @layer base {
   body {
-    @apply bg-white text-slate-900 font-sans antialiased selection:bg-secondary selection:text-white;
+    @apply bg-dark text-white font-sans antialiased selection:bg-secondary selection:text-white;
   }
   
   h1, h2, h3, h4 {
-    @apply font-display tracking-tight text-primary;
+    @apply font-display tracking-tight text-white;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/70 backdrop-blur-md border border-white/20;
+    @apply bg-white/5 backdrop-blur-2xl border border-white/10;
   }
   
   .glass-dark {
-    @apply bg-primary/40 backdrop-blur-md border border-white/10;
+    @apply bg-primary/20 backdrop-blur-2xl border border-white/5;
   }
   
+  .glass-button {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 hover:bg-white/10 transition-colors;
+  }
+
   .gradient-hero {
     background: linear-gradient(135deg, #1E2A5A 0%, #E53935 100%);
   }
   
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400;
+  }
+  
+  .mesh-gradient-red {
+    @apply absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-secondary rounded-full blur-[120px] opacity-20 pointer-events-none;
+  }
+  
+  .mesh-gradient-navy {
+    @apply absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-primary rounded-full blur-[150px] opacity-40 pointer-events-none;
   }
 }
 
