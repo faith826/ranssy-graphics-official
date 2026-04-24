@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 export default function Hero() {
-  const { t } = useLanguage();
+  const { t, setActiveSection } = useLanguage();
 
   return (
     <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
@@ -36,14 +36,15 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">
-            <a 
-              href="#courses" 
+            <button 
+              onClick={() => setActiveSection('courses')}
               className="px-8 py-4 bg-secondary text-white rounded-xl font-bold flex items-center gap-2 hover:scale-105 transition-transform"
             >
               {t.hero.ctaStart}
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </button>
             <button 
+              onClick={() => setActiveSection('services')}
               className="px-8 py-4 glass-button rounded-xl font-bold"
             >
               {t.hero.ctaService}

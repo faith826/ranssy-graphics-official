@@ -2,6 +2,7 @@ export const translations = {
   en: {
     nav: {
       home: "Home",
+      about: "About",
       services: "Services",
       courses: "Courses",
       portfolio: "Portfolio",
@@ -50,7 +51,10 @@ export const translations = {
       items: [
         { title: "Graphic Design Basics", duration: "4 Weeks", price: "$49" },
         { title: "Photoshop Training", duration: "6 Weeks", price: "$79" },
-        { title: "AI for Beginners", duration: "3 Weeks", price: "$59" }
+        { title: "AI for Beginners", duration: "3 Weeks", price: "$59" },
+        { title: "Advanced UI/UX with AI", duration: "8 Weeks", price: "$99" },
+        { title: "Branding Masterclass", duration: "5 Weeks", price: "$89" },
+        { title: "AI Platform Dev", duration: "12 Weeks", price: "$199" }
       ]
     },
     portfolio: {
@@ -77,12 +81,16 @@ export const translations = {
       email: "Email Address",
       message: "Your Message",
       send: "Send Message",
-      whatsapp: "Chat on WhatsApp"
+      whatsapp: "Chat on WhatsApp",
+      office: "Main Office Nairobi",
+      emailValue: "ranssymaina@gmail.com",
+      whatsappValue: "+254 785 630896"
     }
   },
   sw: {
     nav: {
       home: "Nyumbani",
+      about: "Kutuhusu",
       services: "Huduma",
       courses: "Kozi",
       portfolio: "Kazi Zetu",
@@ -131,7 +139,10 @@ export const translations = {
       items: [
         { title: "Msingi wa Ubunifu wa Picha", duration: "Wiki 4", price: "Tsh 120,000" },
         { title: "Mafunzo ya Photoshop", duration: "Wiki 6", price: "Tsh 200,000" },
-        { title: "AI kwa Waanzilishi", duration: "Wiki 3", price: "Tsh 150,000" }
+        { title: "AI kwa Waanzilishi", duration: "Wiki 3", price: "Tsh 150,000" },
+        { title: "Ubunifu wa UI/UX wa Juu", duration: "Wiki 8", price: "Tsh 300,000" },
+        { title: "Ujuzi wa Chapa (Masterclass)", duration: "Wiki 5", price: "Tsh 250,000" },
+        { title: "Maendeleo ya Mifumo ya AI", duration: "Wiki 12", price: "Tsh 500,000" }
       ]
     },
     portfolio: {
@@ -158,7 +169,10 @@ export const translations = {
       email: "Barua Pepe",
       message: "Ujumbe Wako",
       send: "Tuma Ujumbe",
-      whatsapp: "Chat kupitia WhatsApp"
+      whatsapp: "Chat kupitia WhatsApp",
+      office: "Ofisi Kuu Nairobi",
+      emailValue: "ranssymaina@gmail.com",
+      whatsappValue: "+254 785 630896"
     }
   }
 };

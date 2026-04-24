@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useLanguage } from '../App';
+import { useLanguage, type Section } from '../App';
 import { cn } from '../lib/utils';
 import { Globe, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function Navbar() {
-  const { lang, setLang, t } = useLanguage();
+  const { lang, setLang, t, activeSection, setActiveSection } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -15,42 +15,52 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: t.nav.home, href: '#' },
-    { name: t.nav.services, href: '#services' },
-    { name: t.nav.courses, href: '#courses' },
-    { name: t.nav.portfolio, href: '#portfolio' },
-    { name: t.nav.contact, href: '#contact' },
+  const navLinks: { name: string; id: Section }[] = [
+    { name: t.nav.home, id: 'home' },
+    { name: t.nav.about, id: 'about' },
+    { name: t.nav.services, id: 'services' },
+    { name: t.nav.courses, id: 'courses' },
+    { name: t.nav.portfolio, id: 'portfolio' },
+    { name: t.nav.contact, id: 'contact' },
   ];
 
   return (
     <nav 
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
-        isScrolled ? "glass py-3 shadow-2xl" : "bg-transparent"
+        isScrolled || activeSection !== 'home' ? "glass py-3 shadow-2xl" : "bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 bg-gradient-to-br from-secondary to-primary rounded-lg flex items-center justify-center transform group-hover:rotate-12 transition-transform shadow-lg shadow-secondary/20">
-            <span className="text-white font-bold text-xl">R</span>
-          </div>
-          <span className="font-display text-xl font-bold tracking-tight text-white uppercase">
+        <button 
+          onClick={() => setActiveSection('home')}
+          className="flex items-center gap-3 group"
+        >
+          <img 
+            src="https://i.postimg.cc/yYmpncQk/Rassy.png" 
+            alt="Ranssy Graphics Logo" 
+            className="w-10 h-10 object-contain transform group-hover:scale-110 transition-transform"
+            referrerPolicy="no-referrer"
+          />
+          <span className="font-display text-xl font-bold tracking-tight text-white uppercase hidden sm:block">
             Ranssy <span className="text-secondary">Graphics</span>
           </span>
-        </a>
+        </button>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href}
-              className="text-sm font-medium text-white/80 hover:text-secondary transition-colors"
+            <button 
+              key={link.id} 
+              onClick={() => setActiveSection(link.id)}
+              className={cn(
+                "text-sm font-medium transition-colors",
+                activeSection === link.id ? "text-secondary" : "text-white/80 hover:text-white"
+              )}
             >
               {link.name}
-            </a>
+            </button>
           ))}
           
           {/* Language Toggle */}
@@ -79,17 +89,22 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 glass border-t border-slate-200 p-6 md:hidden flex flex-col gap-4"
+            className="absolute top-full left-0 right-0 glass border-t border-slate-200 p-6 md:hidden flex flex-col gap-4 shadow-2xl"
           >
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href}
-                className="text-lg font-medium text-slate-800"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <button 
+                key={link.id} 
+                onClick={() => {
+                  setActiveSection(link.id);
+                  setIsMobileMenuOpen(false);
+                }}
+                className={cn(
+                  "text-lg font-medium text-left",
+                  activeSection === link.id ? "text-secondary" : "text-white"
+                )}
               >
                 {link.name}
-              </a>
+              </button>
             ))}
             <button 
               onClick={() => {

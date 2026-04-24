@@ -5,44 +5,55 @@ import { Mail, Phone, MessageSquare, Send, Instagram, Facebook, Twitter } from '
 export default function Contact() {
   const { t } = useLanguage();
 
+  const handleWhatsApp = () => {
+    window.open(`https://wa.me/${t.contact.whatsappValue.replace(/\s+/g, '')}`, '_blank');
+  };
+
   return (
-    <section id="contact" className="py-24 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="contact" className="py-24 bg-dark relative overflow-hidden">
+      <div className="mesh-gradient-red opacity-10" />
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-3 gap-12">
           <div className="lg:col-span-1">
-             <h2 className="text-4xl font-extrabold mb-6 leading-tight">{t.contact.title}</h2>
-             <p className="text-slate-600 mb-10 text-lg">
+             <h2 className="text-4xl font-extrabold mb-6 leading-tight uppercase tracking-tight">{t.contact.title}</h2>
+             <p className="text-gray-400 mb-10 text-lg font-medium leading-relaxed">
                 Have a project in mind or want to join our classes? Reach out and we'll get back to you within 24 hours.
              </p>
 
              <div className="space-y-6">
-                <a href="https://wa.me/255123456789" className="flex items-center gap-4 group p-4 bg-white rounded-2xl border border-slate-100 hover:border-secondary/20 transition-all shadow-sm">
-                   <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-green-600">
-                      <MessageSquare className="w-6 h-6" />
+                <button 
+                  onClick={handleWhatsApp}
+                  className="w-full flex items-center gap-4 group p-5 bg-white/5 rounded-3xl border border-white/10 hover:border-secondary/40 transition-all shadow-xl backdrop-blur-md"
+                >
+                   <div className="w-14 h-14 bg-green-500/20 rounded-2xl flex items-center justify-center text-green-500 group-hover:scale-110 transition-transform">
+                      <MessageSquare className="w-7 h-7" />
                    </div>
-                   <div>
-                      <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">WhatsApp</div>
-                      <div className="font-bold text-primary">+255 123 456 789</div>
+                   <div className="text-left">
+                      <div className="text-[10px] font-black text-secondary uppercase tracking-[0.2em] mb-1">WhatsApp</div>
+                      <div className="font-bold text-white text-lg">{t.contact.whatsappValue}</div>
                    </div>
-                </a>
+                </button>
 
-                <div className="flex items-center gap-4 p-4 bg-white rounded-2xl border border-slate-100 shadow-sm">
-                   <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600">
-                      <Mail className="w-6 h-6" />
+                <div className="flex items-center gap-4 p-5 bg-white/5 rounded-3xl border border-white/10 shadow-xl backdrop-blur-md">
+                   <div className="w-14 h-14 bg-blue-500/20 rounded-2xl flex items-center justify-center text-blue-500">
+                      <Mail className="w-7 h-7" />
                    </div>
-                   <div>
-                      <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Email</div>
-                      <div className="font-bold text-primary">hello@ranssy.com</div>
+                   <div className="text-left">
+                      <div className="text-[10px] font-black text-blue-400 uppercase tracking-[0.2em] mb-1">Email</div>
+                      <div className="font-bold text-white text-lg">{t.contact.emailValue}</div>
                    </div>
                 </div>
-             </div>
 
-             <div className="flex gap-4 mt-12">
-                {[Instagram, Facebook, Twitter].map((Icon, i) => (
-                   <button key={i} className="w-12 h-12 border border-slate-200 rounded-xl flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white hover:border-primary transition-all">
-                      <Icon className="w-5 h-5" />
-                   </button>
-                ))}
+                <div className="flex items-center gap-4 p-5 bg-white/5 rounded-3xl border border-white/10 shadow-xl backdrop-blur-md">
+                   <div className="w-14 h-14 bg-secondary/20 rounded-2xl flex items-center justify-center text-secondary">
+                      <Phone className="w-7 h-7" />
+                   </div>
+                   <div className="text-left">
+                      <div className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-1">Office</div>
+                      <div className="font-bold text-white text-lg">{t.contact.office}</div>
+                   </div>
+                </div>
              </div>
           </div>
 
@@ -51,38 +62,38 @@ export default function Contact() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="glass p-8 md:p-12 rounded-[2.5rem] border-white shadow-xl"
+                className="glass p-8 md:p-12 rounded-[2.5rem] border-white/5 shadow-2xl relative"
                 onSubmit={(e) => e.preventDefault()}
              >
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
-                   <div className="space-y-2">
-                      <label className="text-sm font-bold text-slate-700 ml-1">{t.contact.name}</label>
+                <div className="grid md:grid-cols-2 gap-8 mb-8">
+                   <div className="space-y-3">
+                      <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">{t.contact.name}</label>
                       <input 
                         type="text" 
                         placeholder="John Doe" 
-                        className="w-full px-6 py-4 bg-slate-100 rounded-2xl border border-transparent focus:bg-white focus:border-secondary focus:ring-4 focus:ring-secondary/5 transition-all outline-none"
+                        className="w-full px-6 py-5 bg-white/5 rounded-2xl border border-white/10 focus:border-secondary focus:bg-white/10 outline-none transition-all placeholder:text-white/20"
                       />
                    </div>
-                   <div className="space-y-2">
-                      <label className="text-sm font-bold text-slate-700 ml-1">{t.contact.email}</label>
+                   <div className="space-y-3">
+                      <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">{t.contact.email}</label>
                       <input 
                         type="email" 
                         placeholder="john@example.com"
-                        className="w-full px-6 py-4 bg-slate-100 rounded-2xl border border-transparent focus:bg-white focus:border-secondary focus:ring-4 focus:ring-secondary/5 transition-all outline-none"
+                        className="w-full px-6 py-5 bg-white/5 rounded-2xl border border-white/10 focus:border-secondary focus:bg-white/10 outline-none transition-all placeholder:text-white/20"
                       />
                    </div>
                 </div>
 
-                <div className="space-y-2 mb-8">
-                   <label className="text-sm font-bold text-slate-700 ml-1">{t.contact.message}</label>
+                <div className="space-y-3 mb-10">
+                   <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">{t.contact.message}</label>
                    <textarea 
                      rows={5}
                      placeholder="Tell us about your project..."
-                     className="w-full px-6 py-4 bg-slate-100 rounded-2xl border border-transparent focus:bg-white focus:border-secondary focus:ring-4 focus:ring-secondary/5 transition-all outline-none resize-none"
+                     className="w-full px-6 py-5 bg-white/5 rounded-2xl border border-white/10 focus:border-secondary focus:bg-white/10 outline-none resize-none transition-all placeholder:text-white/20"
                    />
                 </div>
 
-                <button className="w-full py-5 bg-primary text-white rounded-2xl font-black text-lg hover:bg-primary/95 transition-all hover:scale-[1.01] flex items-center justify-center gap-3 shadow-lg hover:shadow-primary/20">
+                <button className="w-full py-5 bg-secondary text-white rounded-2xl font-black text-xl hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-3 shadow-xl shadow-secondary/20">
                    {t.contact.send}
                    <Send className="w-6 h-6" />
                 </button>

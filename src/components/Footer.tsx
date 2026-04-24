@@ -9,10 +9,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12 pb-16 border-b border-white/10">
           <div className="col-span-1 md:col-span-2">
-             <div className="flex items-center gap-2 mb-6">
-                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                  <span className="text-primary font-bold text-xl">R</span>
-                </div>
+             <div className="flex items-center gap-3 mb-6">
+                <img 
+                  src="https://i.postimg.cc/yYmpncQk/Rassy.png" 
+                  alt="Ranssy Graphics Logo" 
+                  className="w-12 h-12 object-contain"
+                  referrerPolicy="no-referrer"
+                />
                 <span className="font-display text-2xl font-bold tracking-tight text-white leading-none">
                   Ranssy <span className="text-secondary">Graphics</span>
                 </span>
@@ -42,15 +45,15 @@ export default function Footer() {
              <ul className="space-y-4 text-sm font-medium">
                 <li className="flex flex-col">
                    <span className="text-[10px] text-white/40 uppercase font-black mb-1">Main Office</span>
-                   Dar es Salaam, Tanzania
+                   {t.contact.office}
                 </li>
                 <li className="flex flex-col">
                    <span className="text-[10px] text-white/40 uppercase font-black mb-1">Email</span>
-                   hello@ranssy.com
+                   {t.contact.emailValue}
                 </li>
                 <li className="flex flex-col">
                    <span className="text-[10px] text-white/40 uppercase font-black mb-1">Phone</span>
-                   +255 123 456 789
+                   {t.contact.whatsappValue}
                 </li>
              </ul>
           </div>
