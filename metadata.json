@@ -1,0 +1,14 @@
+{
+  "name": "Ranssy Graphics",
+  "description": "Professional graphic design, AI training, and creative branding agency.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "Graphic Design Training",
+    "AI Training",
+    "Branding & Printing",
+    "AI Platform Development"
+  ]
+}
